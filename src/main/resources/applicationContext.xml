@@ -17,7 +17,14 @@
             <log message="Starting Camel Route" loggingLevel="INFO"/>
             <to uri="bean:testProcessor"/>
             <log message="Ending Camel Route" loggingLevel="INFO"/>
-            <to uri="file:C:/app/OUT"/>
+
+        </route>
+        <route>
+            <from uri="file:C:/app/OUT?noop=true"/>
+
+            <to uri="file:C:/app/OUTER"/>
+
+
         </route>
     </camelContext>
 

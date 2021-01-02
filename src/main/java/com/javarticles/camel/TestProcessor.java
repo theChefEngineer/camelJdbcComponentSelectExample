@@ -2,6 +2,7 @@ package com.javarticles.camel;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.apache.camel.ProducerTemplate;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -28,13 +29,36 @@ public class TestProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
        String row = exchange.getIn().getBody(String.class);
-        String xml = "";
+        String databaseInfo ="";
+        ProducerTemplate template = exchange.getContext().createProducerTemplate();
 
 
         System.out.println("=========================>\n"+row);
+        Document document = convertStringToDocument(row);
+        // System.out.println( evaluateXPath(document, "/employees/@dateOfBirth") );
+        XPathFactory xpf = XPathFactory.newInstance();
+        XPath xpath = xpf.newXPath();
+        Element userElement = (Element) xpath.evaluate("/employees", document,
+                XPathConstants.NODE);
+        System.out.println(userElement.getAttribute("dateOfBirth").toString());
+        System.out.println(userElement.getAttribute("idOfXml").toString());
+        System.out.println(userElement.getAttribute("databaseInfo").toString());
 
+        databaseInfo= userElement.getAttribute("databaseInfo").toString();
+        System.out.println("THE DATABASE IS "+databaseInfo);
+        if (!databaseInfo.equals("ORACLE")){
+            System.out.println("NOT EQUAL TO ORACLE ");
+        }else{
+            template.sendBody("file:C:/app/OUT?fileName=employ.xml", "<hello>world!</hello>");
 
+        }
     }
+
+
+
+
+
+
     private static Document convertStringToDocument(String xmlStr) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;

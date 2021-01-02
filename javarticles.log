@@ -7376,3 +7376,1631 @@ Caused by: java.lang.RuntimeException: Unable to evaluate expression using this 
 2021-01-02 03:10:19,090 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 13 seconds
 2021-01-02 03:10:19,107 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 15.245 seconds
 2021-01-02 03:10:19,108 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 13.233 seconds
+2021-01-02 15:22:11,922 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:22:11 WEST 2021]; root of context hierarchy
+2021-01-02 15:22:12,126 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:22:16,080 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:22:16,082 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:22:16,509 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:22:17,163 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:22:17,164 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:22:17,172 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:22:17,173 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:22:17,529 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:22:17,530 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:22:17,537 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 1.452 seconds
+2021-01-02 15:22:17,541 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:22:17,542 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:22:17,543 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.001 seconds
+2021-01-02 15:22:18,585 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:22:18,663 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-59991-1609597335820-0-1 on ExchangeId: ID-DESKTOP-M08P6R8-59991-1609597335820-0-2). Exhausted after delivery attempt: 1 caught: javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [        82]
+[route1            ] [log1              ] [log                                                                           ] [         6]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [        65]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-59991-1609597335820-0-2
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-59991-1609597335820-0-1, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+
+javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+---------
+java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+--------------- linked to ------------------
+javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:285)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	... 24 more
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+2021-01-02 15:22:18,676 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@26bfb568 for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:22:19,192 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:22:19,201 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-59991-1609597335820-0-3 on ExchangeId: ID-DESKTOP-M08P6R8-59991-1609597335820-0-4). Exhausted after delivery attempt: 1 caught: javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [         7]
+[route1            ] [log1              ] [log                                                                           ] [         1]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [         6]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-59991-1609597335820-0-4
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-59991-1609597335820-0-3, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+
+javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+---------
+java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+--------------- linked to ------------------
+javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:285)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	... 24 more
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+2021-01-02 15:22:19,241 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@26bfb568 for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:22:19,548 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:22:19,551 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:22:19,568 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:22:19,569 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:22:19,580 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.039 seconds
+2021-01-02 15:22:19,582 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.032 seconds
+2021-01-02 15:23:42,217 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@73a8dfcc: startup date [Sat Jan 02 15:23:42 WEST 2021]; root of context hierarchy
+2021-01-02 15:23:42,419 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:23:46,123 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:23:46,126 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:23:46,482 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:23:46,849 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:23:46,849 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:23:46,857 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:23:46,858 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:23:47,057 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:23:47,061 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:23:47,068 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.940 seconds
+2021-01-02 15:23:47,070 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:23:47,070 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:23:47,070 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.000 seconds
+2021-01-02 15:23:48,096 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:23:48,151 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60017-1609597425866-0-1 on ExchangeId: ID-DESKTOP-M08P6R8-60017-1609597425866-0-2). Exhausted after delivery attempt: 1 caught: javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [        58]
+[route1            ] [log1              ] [log                                                                           ] [         6]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [        45]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60017-1609597425866-0-2
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60017-1609597425866-0-1, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+
+javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+---------
+java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+--------------- linked to ------------------
+javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:285)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	... 24 more
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+2021-01-02 15:23:48,167 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@29ad8aba for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:23:48,685 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:23:48,692 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60017-1609597425866-0-3 on ExchangeId: ID-DESKTOP-M08P6R8-60017-1609597425866-0-4). Exhausted after delivery attempt: 1 caught: javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [         5]
+[route1            ] [log1              ] [log                                                                           ] [         1]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [         4]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60017-1609597425866-0-4
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60017-1609597425866-0-3, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+
+javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+---------
+java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+--------------- linked to ------------------
+javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:285)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	... 24 more
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+2021-01-02 15:23:48,710 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@29ad8aba for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:23:49,075 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:23:49,077 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:23:49,087 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:23:49,088 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:23:49,094 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.024 seconds
+2021-01-02 15:23:49,094 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.019 seconds
+2021-01-02 15:27:54,480 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:27:54 WEST 2021]; root of context hierarchy
+2021-01-02 15:27:54,599 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:27:57,416 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:27:57,421 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:27:57,677 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:27:58,070 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:27:58,070 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:27:58,077 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:27:58,077 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:27:58,237 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:27:58,238 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:27:58,244 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.825 seconds
+2021-01-02 15:27:58,247 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:27:58,247 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:27:58,248 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.000 seconds
+2021-01-02 15:27:59,271 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:27:59,351 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60087-1609597677162-0-1 on ExchangeId: ID-DESKTOP-M08P6R8-60087-1609597677162-0-2). Exhausted after delivery attempt: 1 caught: javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: A location step was expected following the '/' or '//' token.
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [        86]
+[route1            ] [log1              ] [log                                                                           ] [        10]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [        69]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60087-1609597677162-0-2
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60087-1609597677162-0-1, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+javax.xml.transform.TransformerException: A location step was expected following the '/' or '//' token.
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.error(XPathParser.java:622)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.RelativeLocationPath(XPathParser.java:1650)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.LocationPath(XPathParser.java:1608)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.PathExpr(XPathParser.java:1328)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.UnionExpr(XPathParser.java:1247)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.UnaryExpr(XPathParser.java:1153)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.MultiplicativeExpr(XPathParser.java:1074)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.AdditiveExpr(XPathParser.java:1016)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.RelationalExpr(XPathParser.java:941)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.EqualityExpr(XPathParser.java:881)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.AndExpr(XPathParser.java:845)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.OrExpr(XPathParser.java:818)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.Expr(XPathParser.java:801)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.initXPath(XPathParser.java:133)
+	at com.sun.org.apache.xpath.internal.XPath.<init>(XPath.java:178)
+	at com.sun.org.apache.xpath.internal.XPath.<init>(XPath.java:268)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:189)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+--------------- linked to ------------------
+javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: A location step was expected following the '/' or '//' token.
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:285)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.transform.TransformerException: A location step was expected following the '/' or '//' token.
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.error(XPathParser.java:622)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.RelativeLocationPath(XPathParser.java:1650)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.LocationPath(XPathParser.java:1608)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.PathExpr(XPathParser.java:1328)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.UnionExpr(XPathParser.java:1247)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.UnaryExpr(XPathParser.java:1153)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.MultiplicativeExpr(XPathParser.java:1074)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.AdditiveExpr(XPathParser.java:1016)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.RelationalExpr(XPathParser.java:941)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.EqualityExpr(XPathParser.java:881)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.AndExpr(XPathParser.java:845)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.OrExpr(XPathParser.java:818)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.Expr(XPathParser.java:801)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.initXPath(XPathParser.java:133)
+	at com.sun.org.apache.xpath.internal.XPath.<init>(XPath.java:178)
+	at com.sun.org.apache.xpath.internal.XPath.<init>(XPath.java:268)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:189)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	... 24 more
+2021-01-02 15:27:59,360 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@4bba646d for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:27:59,873 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:27:59,878 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60087-1609597677162-0-3 on ExchangeId: ID-DESKTOP-M08P6R8-60087-1609597677162-0-4). Exhausted after delivery attempt: 1 caught: javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: A location step was expected following the '/' or '//' token.
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [         3]
+[route1            ] [log1              ] [log                                                                           ] [         0]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [         3]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60087-1609597677162-0-4
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60087-1609597677162-0-3, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+javax.xml.transform.TransformerException: A location step was expected following the '/' or '//' token.
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.error(XPathParser.java:622)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.RelativeLocationPath(XPathParser.java:1650)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.LocationPath(XPathParser.java:1608)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.PathExpr(XPathParser.java:1328)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.UnionExpr(XPathParser.java:1247)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.UnaryExpr(XPathParser.java:1153)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.MultiplicativeExpr(XPathParser.java:1074)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.AdditiveExpr(XPathParser.java:1016)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.RelationalExpr(XPathParser.java:941)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.EqualityExpr(XPathParser.java:881)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.AndExpr(XPathParser.java:845)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.OrExpr(XPathParser.java:818)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.Expr(XPathParser.java:801)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.initXPath(XPathParser.java:133)
+	at com.sun.org.apache.xpath.internal.XPath.<init>(XPath.java:178)
+	at com.sun.org.apache.xpath.internal.XPath.<init>(XPath.java:268)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:189)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+--------------- linked to ------------------
+javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: A location step was expected following the '/' or '//' token.
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:285)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.transform.TransformerException: A location step was expected following the '/' or '//' token.
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.error(XPathParser.java:622)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.RelativeLocationPath(XPathParser.java:1650)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.LocationPath(XPathParser.java:1608)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.PathExpr(XPathParser.java:1328)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.UnionExpr(XPathParser.java:1247)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.UnaryExpr(XPathParser.java:1153)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.MultiplicativeExpr(XPathParser.java:1074)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.AdditiveExpr(XPathParser.java:1016)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.RelationalExpr(XPathParser.java:941)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.EqualityExpr(XPathParser.java:881)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.AndExpr(XPathParser.java:845)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.OrExpr(XPathParser.java:818)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.Expr(XPathParser.java:801)
+	at com.sun.org.apache.xpath.internal.compiler.XPathParser.initXPath(XPathParser.java:133)
+	at com.sun.org.apache.xpath.internal.XPath.<init>(XPath.java:178)
+	at com.sun.org.apache.xpath.internal.XPath.<init>(XPath.java:268)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:189)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	... 24 more
+2021-01-02 15:27:59,881 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@4bba646d for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:28:00,255 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:28:00,257 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:28:00,264 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:28:00,265 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:28:00,270 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.023 seconds
+2021-01-02 15:28:00,271 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.015 seconds
+2021-01-02 15:28:49,536 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@ea30797: startup date [Sat Jan 02 15:28:49 WEST 2021]; root of context hierarchy
+2021-01-02 15:28:49,701 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:28:53,381 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:28:53,384 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:28:53,708 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:28:54,232 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:28:54,232 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:28:54,238 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:28:54,239 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:28:54,482 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:28:54,483 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:28:54,488 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 1.106 seconds
+2021-01-02 15:28:54,490 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:28:54,491 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:28:54,491 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.001 seconds
+2021-01-02 15:28:55,535 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:28:55,622 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60097-1609597733157-0-1 on ExchangeId: ID-DESKTOP-M08P6R8-60097-1609597733157-0-2). Exhausted after delivery attempt: 1 caught: javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [        91]
+[route1            ] [log1              ] [log                                                                           ] [         7]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [        76]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60097-1609597733157-0-2
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60097-1609597733157-0-1, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+
+javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+---------
+java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+--------------- linked to ------------------
+javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:285)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	... 24 more
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+2021-01-02 15:28:55,637 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@13a1c129 for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:28:56,151 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:28:56,157 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60097-1609597733157-0-3 on ExchangeId: ID-DESKTOP-M08P6R8-60097-1609597733157-0-4). Exhausted after delivery attempt: 1 caught: javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [         4]
+[route1            ] [log1              ] [log                                                                           ] [         0]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [         4]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60097-1609597733157-0-4
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60097-1609597733157-0-3, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+
+javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+---------
+java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+--------------- linked to ------------------
+javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:285)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:39)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.transform.TransformerException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:368)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.eval(XPathImpl.java:209)
+	at com.sun.org.apache.xpath.internal.jaxp.XPathImpl.evaluate(XPathImpl.java:271)
+	... 24 more
+Caused by: java.lang.RuntimeException: Unable to evaluate expression using this context
+	at com.sun.org.apache.xpath.internal.axes.NodeSequence.setRoot(NodeSequence.java:265)
+	at com.sun.org.apache.xpath.internal.axes.LocPathIterator.execute(LocPathIterator.java:213)
+	at com.sun.org.apache.xpath.internal.XPath.execute(XPath.java:339)
+	... 26 more
+2021-01-02 15:28:56,170 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@13a1c129 for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:28:56,493 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:28:56,496 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:28:56,507 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:28:56,508 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:28:56,519 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.029 seconds
+2021-01-02 15:28:56,520 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.026 seconds
+2021-01-02 15:30:45,300 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@73a8dfcc: startup date [Sat Jan 02 15:30:45 WEST 2021]; root of context hierarchy
+2021-01-02 15:30:45,455 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:30:48,239 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:30:48,241 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:30:48,460 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:30:48,710 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:30:48,710 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:30:48,716 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:30:48,716 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:30:48,904 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:30:48,905 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:30:48,910 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.668 seconds
+2021-01-02 15:30:48,912 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:30:48,912 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:30:48,912 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.000 seconds
+2021-01-02 15:30:49,972 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:30:50,019 | INFO | MarkerIgnoringBase.java 95 | Ending Camel Route
+2021-01-02 15:30:50,919 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:30:50,921 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:30:50,938 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:30:50,939 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:30:50,945 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.033 seconds
+2021-01-02 15:30:50,946 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.026 seconds
+2021-01-02 15:33:12,063 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:33:12 WEST 2021]; root of context hierarchy
+2021-01-02 15:33:12,194 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:33:14,987 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:33:14,989 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:33:15,222 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:33:15,469 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:33:15,469 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:33:15,475 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:33:15,476 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:33:15,647 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:33:15,648 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:33:15,654 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.663 seconds
+2021-01-02 15:33:15,657 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:33:15,657 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:33:15,657 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.000 seconds
+2021-01-02 15:33:16,723 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:33:16,769 | INFO | MarkerIgnoringBase.java 95 | Ending Camel Route
+2021-01-02 15:33:17,660 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:33:17,663 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:33:17,680 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:33:17,681 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:33:17,690 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.033 seconds
+2021-01-02 15:33:17,691 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.030 seconds
+2021-01-02 15:34:33,892 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:34:33 WEST 2021]; root of context hierarchy
+2021-01-02 15:34:33,996 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:34:36,736 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:34:36,737 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:34:36,970 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:34:37,208 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:34:37,209 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:34:37,214 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:34:37,215 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:34:37,377 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:34:37,378 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:34:37,382 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.644 seconds
+2021-01-02 15:34:37,384 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:34:37,384 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:34:37,384 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.000 seconds
+2021-01-02 15:34:38,435 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:34:38,481 | INFO | MarkerIgnoringBase.java 95 | Ending Camel Route
+2021-01-02 15:34:39,397 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:34:39,400 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:34:39,419 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:34:39,420 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:34:39,433 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.049 seconds
+2021-01-02 15:34:39,434 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.036 seconds
+2021-01-02 15:35:12,349 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:35:12 WEST 2021]; root of context hierarchy
+2021-01-02 15:35:12,450 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:35:15,138 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:35:15,141 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:35:15,383 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:35:15,680 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:35:15,681 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:35:15,686 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:35:15,686 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:35:15,849 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:35:15,849 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:35:15,853 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.713 seconds
+2021-01-02 15:35:15,855 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:35:15,856 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:35:15,856 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.001 seconds
+2021-01-02 15:35:16,901 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:35:16,954 | INFO | MarkerIgnoringBase.java 95 | Ending Camel Route
+2021-01-02 15:35:17,858 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:35:17,861 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:35:17,879 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:35:17,881 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:35:17,886 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.031 seconds
+2021-01-02 15:35:17,887 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.028 seconds
+2021-01-02 15:36:46,704 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:36:46 WEST 2021]; root of context hierarchy
+2021-01-02 15:36:46,845 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:36:49,528 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:36:49,531 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:36:49,776 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:36:50,029 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:36:50,030 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:36:50,037 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:36:50,038 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:36:50,197 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:36:50,198 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:36:50,204 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.672 seconds
+2021-01-02 15:36:50,207 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:36:50,207 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:36:50,207 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.000 seconds
+2021-01-02 15:36:51,279 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:36:51,333 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60168-1609598209321-0-1 on ExchangeId: ID-DESKTOP-M08P6R8-60168-1609598209321-0-2). Exhausted after delivery attempt: 1 caught: java.lang.NullPointerException
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [        61]
+[route1            ] [log1              ] [log                                                                           ] [         9]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [        42]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60168-1609598209321-0-2
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60168-1609598209321-0-1, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+java.lang.NullPointerException
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:51)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2021-01-02 15:36:51,339 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@3f0886e6 for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:36:51,863 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:36:51,877 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60168-1609598209321-0-3 on ExchangeId: ID-DESKTOP-M08P6R8-60168-1609598209321-0-4). Exhausted after delivery attempt: 1 caught: java.lang.NullPointerException
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [        12]
+[route1            ] [log1              ] [log                                                                           ] [         1]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [         9]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60168-1609598209321-0-4
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60168-1609598209321-0-3, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+java.lang.NullPointerException
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:51)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2021-01-02 15:36:51,879 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@3f0886e6 for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:36:52,214 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:36:52,215 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:36:52,223 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:36:52,223 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:36:52,228 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.021 seconds
+2021-01-02 15:36:52,228 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.014 seconds
+2021-01-02 15:37:12,398 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:37:12 WEST 2021]; root of context hierarchy
+2021-01-02 15:37:12,569 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:37:15,408 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:37:15,410 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:37:15,651 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:37:15,905 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:37:15,906 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:37:15,915 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:37:15,916 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:37:16,079 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:37:16,079 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:37:16,083 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.673 seconds
+2021-01-02 15:37:16,085 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:37:16,085 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:37:16,086 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.000 seconds
+2021-01-02 15:37:17,145 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:37:17,198 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60175-1609598235172-0-1 on ExchangeId: ID-DESKTOP-M08P6R8-60175-1609598235172-0-2). Exhausted after delivery attempt: 1 caught: java.lang.NullPointerException
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [        58]
+[route1            ] [log1              ] [log                                                                           ] [         8]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [        41]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60175-1609598235172-0-2
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60175-1609598235172-0-1, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+java.lang.NullPointerException
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:51)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2021-01-02 15:37:17,203 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@33ab5c47 for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:37:17,722 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:37:17,740 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60175-1609598235172-0-3 on ExchangeId: ID-DESKTOP-M08P6R8-60175-1609598235172-0-4). Exhausted after delivery attempt: 1 caught: java.lang.NullPointerException
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [        16]
+[route1            ] [log1              ] [log                                                                           ] [         1]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [        12]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60175-1609598235172-0-4
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60175-1609598235172-0-3, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+java.lang.NullPointerException
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:51)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2021-01-02 15:37:17,743 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@33ab5c47 for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:37:18,087 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:37:18,091 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:37:18,110 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:37:18,111 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:37:18,117 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.032 seconds
+2021-01-02 15:37:18,118 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.030 seconds
+2021-01-02 15:38:41,218 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:38:41 WEST 2021]; root of context hierarchy
+2021-01-02 15:38:41,334 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:38:44,072 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:38:44,074 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:38:44,312 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:38:44,553 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:38:44,554 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:38:44,560 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:38:44,561 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:38:44,732 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:38:44,733 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:38:44,736 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.663 seconds
+2021-01-02 15:38:44,739 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:38:44,739 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:38:44,739 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.000 seconds
+2021-01-02 15:38:45,811 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:38:45,864 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60207-1609598323856-0-1 on ExchangeId: ID-DESKTOP-M08P6R8-60207-1609598323856-0-2). Exhausted after delivery attempt: 1 caught: java.lang.IllegalArgumentException: defaultEndpoint must be specified
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [        62]
+[route1            ] [log1              ] [log                                                                           ] [         9]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [        42]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60207-1609598323856-0-2
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60207-1609598323856-0-1, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+java.lang.IllegalArgumentException: defaultEndpoint must be specified
+	at org.apache.camel.util.ObjectHelper.notNull(ObjectHelper.java:293)
+	at org.apache.camel.impl.DefaultProducerTemplate.getMandatoryDefaultEndpoint(DefaultProducerTemplate.java:462)
+	at org.apache.camel.impl.DefaultProducerTemplate.sendBody(DefaultProducerTemplate.java:359)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:52)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2021-01-02 15:38:45,871 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@7752d005 for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:38:46,389 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:38:46,407 | ERROR | MarkerIgnoringBase.java 159 | Failed delivery for (MessageId: ID-DESKTOP-M08P6R8-60207-1609598323856-0-3 on ExchangeId: ID-DESKTOP-M08P6R8-60207-1609598323856-0-4). Exhausted after delivery attempt: 1 caught: java.lang.IllegalArgumentException: defaultEndpoint must be specified
+
+Message History
+---------------------------------------------------------------------------------------------------------------------------------------
+RouteId              ProcessorId          Processor                                                                        Elapsed (ms)
+[route1            ] [route1            ] [file://C:/app/IN?noop=true                                                    ] [        15]
+[route1            ] [log1              ] [log                                                                           ] [         1]
+[route1            ] [to1               ] [bean:testProcessor                                                            ] [        11]
+
+Exchange
+---------------------------------------------------------------------------------------------------------------------------------------
+Exchange[
+	Id                  ID-DESKTOP-M08P6R8-60207-1609598323856-0-4
+	ExchangePattern     InOnly
+	Headers             {breadcrumbId=ID-DESKTOP-M08P6R8-60207-1609598323856-0-3, CamelFileAbsolute=true, CamelFileAbsolutePath=C:\app\IN\employees.xml, CamelFileContentType=text/xml, CamelFileLastModified=1609549181378, CamelFileLength=548, CamelFileName=employees.xml, CamelFileNameConsumed=employees.xml, CamelFileNameOnly=employees.xml, CamelFileParent=C:\app\IN, CamelFilePath=C:\app\IN\employees.xml, CamelFileRelativePath=employees.xml, CamelRedelivered=false, CamelRedeliveryCounter=0}
+	BodyType            org.apache.camel.component.file.GenericFile
+	Body                [Body is file based: GenericFile[C:\app\IN\employees.xml]]
+]
+
+Stacktrace
+---------------------------------------------------------------------------------------------------------------------------------------
+java.lang.IllegalArgumentException: defaultEndpoint must be specified
+	at org.apache.camel.util.ObjectHelper.notNull(ObjectHelper.java:293)
+	at org.apache.camel.impl.DefaultProducerTemplate.getMandatoryDefaultEndpoint(DefaultProducerTemplate.java:462)
+	at org.apache.camel.impl.DefaultProducerTemplate.sendBody(DefaultProducerTemplate.java:359)
+	at com.javarticles.camel.TestProcessor.process(TestProcessor.java:52)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:102)
+	at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+	at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+	at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+	at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:129)
+	at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+	at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:448)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:118)
+	at org.apache.camel.processor.Pipeline.process(Pipeline.java:80)
+	at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:191)
+	at org.apache.camel.component.file.GenericFileConsumer.processExchange(GenericFileConsumer.java:435)
+	at org.apache.camel.component.file.GenericFileConsumer.processBatch(GenericFileConsumer.java:211)
+	at org.apache.camel.component.file.GenericFileConsumer.poll(GenericFileConsumer.java:175)
+	at org.apache.camel.impl.ScheduledPollConsumer.doRun(ScheduledPollConsumer.java:174)
+	at org.apache.camel.impl.ScheduledPollConsumer.run(ScheduledPollConsumer.java:101)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2021-01-02 15:38:46,412 | WARN | GenericFileOnCompletion.java 141 | Rollback file strategy: org.apache.camel.component.file.strategy.GenericFileRenameProcessStrategy@7752d005 for file: GenericFile[C:\app\IN\employees.xml]
+2021-01-02 15:38:46,741 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:38:46,742 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:38:46,759 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:38:46,762 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:38:46,778 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.038 seconds
+2021-01-02 15:38:46,779 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.036 seconds
+2021-01-02 15:39:24,564 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:39:24 WEST 2021]; root of context hierarchy
+2021-01-02 15:39:24,681 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:39:27,451 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:39:27,453 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:39:27,721 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:39:27,990 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:39:27,990 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:39:27,996 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:39:27,996 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:39:28,151 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:39:28,151 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:39:28,156 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.702 seconds
+2021-01-02 15:39:28,158 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:39:28,158 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:39:28,158 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.000 seconds
+2021-01-02 15:39:29,214 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:39:29,338 | INFO | MarkerIgnoringBase.java 95 | Ending Camel Route
+2021-01-02 15:39:30,168 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:39:30,169 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:39:30,177 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:39:30,178 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:39:30,182 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.023 seconds
+2021-01-02 15:39:30,182 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.013 seconds
+2021-01-02 15:42:24,189 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1e127982: startup date [Sat Jan 02 15:42:24 WEST 2021]; root of context hierarchy
+2021-01-02 15:42:24,413 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:42:26,271 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@73a8dfcc: startup date [Sat Jan 02 15:42:26 WEST 2021]; root of context hierarchy
+2021-01-02 15:42:26,453 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:42:29,626 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:42:29,629 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:42:30,118 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:42:30,551 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:42:30,557 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:42:30,723 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:42:30,723 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:42:30,739 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:42:30,740 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:42:31,019 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:42:31,140 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:42:31,141 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:42:31,150 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 1.518 seconds
+2021-01-02 15:42:31,181 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:42:31,182 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:42:31,182 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.001 seconds
+2021-01-02 15:42:31,349 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:42:31,350 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:42:31,357 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:42:31,357 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:42:31,505 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:42:31,506 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:42:31,510 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.957 seconds
+2021-01-02 15:42:31,512 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:42:31,512 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:42:31,513 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.000 seconds
+2021-01-02 15:42:32,186 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:42:32,320 | INFO | MarkerIgnoringBase.java 95 | Ending Camel Route
+2021-01-02 15:42:32,567 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:42:32,674 | INFO | MarkerIgnoringBase.java 95 | Ending Camel Route
+2021-01-02 15:42:33,191 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:42:33,197 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:42:33,230 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:42:33,231 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:42:33,242 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.061 seconds
+2021-01-02 15:42:33,243 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.051 seconds
+2021-01-02 15:42:33,522 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:42:33,523 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:42:33,531 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:42:33,531 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:42:33,540 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.028 seconds
+2021-01-02 15:42:33,541 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.018 seconds
+2021-01-02 15:43:22,484 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:43:22 WEST 2021]; root of context hierarchy
+2021-01-02 15:43:22,620 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:43:25,229 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:43:25,232 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:43:25,465 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:43:25,752 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:43:25,753 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:43:25,760 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:43:25,760 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:43:25,908 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:43:25,908 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:43:25,912 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.681 seconds
+2021-01-02 15:43:25,914 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:43:25,915 | INFO | DefaultCamelContext.java 2453 | Total 1 routes, of which 1 is started.
+2021-01-02 15:43:25,915 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.001 seconds
+2021-01-02 15:43:26,961 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:43:27,077 | INFO | MarkerIgnoringBase.java 95 | Ending Camel Route
+2021-01-02 15:43:27,921 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:43:27,924 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 1 routes (timeout 300 seconds)
+2021-01-02 15:43:27,941 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:43:27,942 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 1 routes completed in 0 seconds
+2021-01-02 15:43:27,955 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.041 seconds
+2021-01-02 15:43:27,956 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.034 seconds
+2021-01-02 15:44:36,632 | INFO | AbstractApplicationContext.java 510 | Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f8f9dd6: startup date [Sat Jan 02 15:44:36 WEST 2021]; root of context hierarchy
+2021-01-02 15:44:36,758 | INFO | XmlBeanDefinitionReader.java 317 | Loading XML bean definitions from class path resource [applicationContext.xml]
+2021-01-02 15:44:39,441 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:44:39,443 | INFO | ManagedManagementStrategy.java 187 | JMX is enabled
+2021-01-02 15:44:39,686 | INFO | DefaultTypeConverter.java 56 | Loaded 183 type converters
+2021-01-02 15:44:39,915 | INFO | DefaultCamelContext.java 2633 | AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2021-01-02 15:44:39,915 | INFO | DefaultCamelContext.java 2643 | StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2021-01-02 15:44:39,924 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:44:39,924 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:44:39,969 | INFO | FileEndpoint.java 87 | Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+2021-01-02 15:44:39,970 | INFO | FileEndpoint.java 93 | Using default memory based idempotent repository with cache max size: 1000
+2021-01-02 15:44:40,080 | INFO | DefaultCamelContext.java 3164 | Route: route1 started and consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:44:40,091 | INFO | DefaultCamelContext.java 3164 | Route: route2 started and consuming from: Endpoint[file://C:/app/OUT?noop=true]
+2021-01-02 15:44:40,091 | INFO | DefaultCamelContext.java 2453 | Total 2 routes, of which 2 is started.
+2021-01-02 15:44:40,095 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.652 seconds
+2021-01-02 15:44:40,097 | INFO | DefaultCamelContext.java 2418 | Apache Camel 2.15.2 (CamelContext: camel-1) is starting
+2021-01-02 15:44:40,098 | INFO | DefaultCamelContext.java 2453 | Total 2 routes, of which 2 is started.
+2021-01-02 15:44:40,099 | INFO | DefaultCamelContext.java 2454 | Apache Camel 2.15.2 (CamelContext: camel-1) started in 0.001 seconds
+2021-01-02 15:44:41,139 | INFO | MarkerIgnoringBase.java 95 | Starting Camel Route
+2021-01-02 15:44:41,268 | INFO | MarkerIgnoringBase.java 95 | Ending Camel Route
+2021-01-02 15:44:42,109 | INFO | DefaultCamelContext.java 2660 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutting down
+2021-01-02 15:44:42,110 | INFO | DefaultShutdownStrategy.java 184 | Starting to graceful shutdown 2 routes (timeout 300 seconds)
+2021-01-02 15:44:42,118 | INFO | DefaultShutdownStrategy.java 647 | Route: route2 shutdown complete, was consuming from: Endpoint[file://C:/app/OUT?noop=true]
+2021-01-02 15:44:42,120 | INFO | DefaultShutdownStrategy.java 647 | Route: route1 shutdown complete, was consuming from: Endpoint[file://C:/app/IN?noop=true]
+2021-01-02 15:44:42,120 | INFO | DefaultShutdownStrategy.java 247 | Graceful shutdown of 2 routes completed in 0 seconds
+2021-01-02 15:44:42,132 | INFO | DefaultCamelContext.java 2745 | Apache Camel 2.15.2 (CamelContext: camel-1) uptime 2.035 seconds
+2021-01-02 15:44:42,133 | INFO | DefaultCamelContext.java 2746 | Apache Camel 2.15.2 (CamelContext: camel-1) is shutdown in 0.023 seconds

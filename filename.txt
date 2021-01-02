@@ -1,0 +1,1 @@
+id:1:name:JdbcTemplate Example:author:Joe:category:spring
